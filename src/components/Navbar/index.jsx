@@ -5,7 +5,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-
+import { useDispatch,useSelector } from 'react-redux';
+import { setSearchValue } from '../../slices/movieSlice';
 import SelectorComponent from '../SelectorComponent';
 
 const Search = styled('div')(({ theme }) => ({
@@ -49,8 +50,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Navbar() {
+  const dispatch=useDispatch();
+  const {searchValue}=useSelector(state=>state.movies);
 
 
+  const onSearchChange=(e)=>{
+    dispatch(setSearchValue(e.target.value));
+  }
+
+  console.log(searchValue);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -64,7 +72,7 @@ export default function Navbar() {
           >
             CineScope
           </Typography>
-          <Search>
+          <Search onChange={onSearchChange}>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>

@@ -1,15 +1,15 @@
-import { useState } from 'react'
-import Navbar from './components/Navbar'
-import './App.css'
+import Home from './pages/Home'
+import {Routes,Route} from "react-router-dom"
+import { inputAdornmentClasses } from '@mui/material/InputAdornment'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-     <Navbar/> 
-    </>
+    <Routes>
+      <Route path='/' element={<Home/>}></Route>
+    </Routes>
   )
 }
 
-export default App
+
+export default App;
+
